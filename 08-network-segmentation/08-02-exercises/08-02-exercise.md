@@ -1,70 +1,149 @@
-# 08-01: Network Segmentation
+# 08-02: Exercises
 
-## What is Network Segmentation?
+## Question
 
-Network segmentation is the practice of dividing a network into smaller, isolated segments to improve security, performance, and manageability.
+A Class B network with network ID **172.20.0.0** is given.  
+The network needs to be divided into **at least 15 subnets**.
 
----
+Based on this requirement, answer the following:
 
-## Why Network Segmentation is Important
-
-### 1. Enhanced Security
-- Limits the spread of attacks
-- Isolates sensitive systems
-
-### 2. Improved Performance
-- Reduces network congestion
-- Improves traffic management
-
-### 3. Better Management
-- Easier monitoring and control
-- Better policy enforcement
-
----
-
-## Common Segmentation Techniques
-
-### 1. Subnetting
-- Dividing a network into smaller IP ranges
-
-### 2. VLAN (Virtual LAN)
-- Logical separation within a physical network
-
-### 3. Firewalls
-- Control traffic between segments
-
-### 4. Access Control Lists (ACLs)
-- Define allowed and blocked communication
+1. How many bits have to be borrowed from the host portion?  
+2. How many total bits will be used to identify the subnet?  
+3. What is the new subnet mask in dotted decimal notation?  
+4. What is the magic number (block size)?  
+5. What are the network IDs of:
+   - the first subnet  
+   - the second subnet  
+   - the last required (15th) subnet  
+   - the last created (16th) subnet  
+6. How many usable host addresses are available per subnet?  
+7. What are the usable host ranges of:
+   - the first subnet  
+   - the second subnet  
+   - the last required (15th) subnet  
 
 ---
 
-## Common Segmentation Strategies
+## Solution
 
-### 1. Geographic Segmentation
-Dividing the network based on physical or geographic locations.
+### Step 1: Number of bits to be borrowed
 
-**Example:**
-- Network is segmented across different branches located in different cities or regions
+Given:
+- Class B network → default prefix = /16  
+- Required subnets = 15  
 
+Checking powers of 2:
 
-### 2. Department-Based Segmentation
-Separating the network according to organizational departments or functions.
+- 2¹ = 2  
+- 2² = 4  
+- 2³ = 8  
+- 2⁴ = 16  
 
-**Example:**
-- Network is divided into segments for HR, Finance, and IT departments
+Thus, 4 bits have to be borrowed (since 2⁴ = 16 ≥ 15).
 
-
-### 3. Device-Type Segmentation
-Grouping devices based on their type or role in the network.
-
-**Example:**
-- Segment 1: Personal devices (laptops, phones)
-- Segment 2: IoT devices (smart TVs, smart bulbs)
+👉 **(1) Bits borrowed = 4**
 
 ---
 
-## Key Idea
+### Step 2: Total subnet bits
 
-Instead of one large network:
+👉 **(2) Total subnet bits = 16 + 4 = 20 bits (/20)**  
 
-➡️ Create multiple smaller, controlled network segments
+---
+
+### Step 3: New subnet mask
+
+Default mask (binary):  
+11111111.11111111.00000000.00000000  
+
+After borrowing 4 bits:  
+11111111.11111111.11110000.00000000  
+
+Convert to decimal:
+
+👉 **(3) Subnet mask = 255.255.240.0 (/20)**  
+
+---
+
+### Step 4: Magic number (Block Size)
+
+The change occurs in the **3rd octet**.
+
+Magic number = 256 − 240 = **16**
+
+👉 **(4) Magic number = 16**
+
+(Subnet IDs increase by 16 in the 3rd octet)
+
+---
+
+### Step 5: Subnet network IDs
+
+Using block size 16:
+
+- 1st → 172.20.0.0/20  
+- 2nd → 172.20.16.0/20  
+- 3rd → 172.20.32.0/20  
+- ...  
+- 15th → 172.20.224.0/20  
+- 16th → 172.20.240.0/20  
+
+👉 **(5) Network IDs:**
+- First subnet = 172.20.0.0  
+- Second subnet = 172.20.16.0  
+- Last required (15th) = 172.20.224.0  
+- Last created (16th) = 172.20.240.0  
+
+---
+
+### Step 6: Number of hosts per subnet
+
+Remaining host bits:
+
+32 − 20 = 12  
+
+Number of usable hosts:
+
+2¹² − 2 = 4096 − 2 = **4094**
+
+👉 **(6) Usable hosts per subnet = 4094**
+
+---
+
+### Step 7: Host ranges
+
+#### First subnet (172.20.0.0/20)
+
+- Network ID → 172.20.0.0  
+- Broadcast → 172.20.15.255  
+- Usable → 172.20.0.1 to 172.20.15.254  
+
+---
+
+#### Second subnet (172.20.16.0/20)
+
+- Network ID → 172.20.16.0  
+- Broadcast → 172.20.31.255  
+- Usable → 172.20.16.1 to 172.20.31.254  
+
+---
+
+#### Last required (15th) subnet (172.20.224.0/20)
+
+- Network ID → 172.20.224.0  
+- Broadcast → 172.20.239.255  
+- Usable → 172.20.224.1 to 172.20.239.254  
+
+👉 **(7) Host ranges:**
+- First subnet → 172.20.0.1 to 172.20.15.254  
+- Second subnet → 172.20.16.1 to 172.20.31.254  
+- Last required subnet → 172.20.224.1 to 172.20.239.254  
+
+---
+
+## Final Summary
+
+- Bits borrowed = 4  
+- Subnet mask = 255.255.240.0 (/20)  
+- Magic number = 16  
+- Hosts per subnet = 4094  
