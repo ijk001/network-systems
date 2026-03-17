@@ -155,16 +155,26 @@ This improves:
 
 ## Practical Example
 
-An organization is assigned:
+**Question:**  
+An organization is assigned: 2001:db8::/48  
 
-- 2001:db8::/48  
+It wants to assign a separate subnet to each department.  
 
-It can create:
+- What is the maximum number of departments it can support?  
+- How many hosts are possible per department?  
 
-- 65,536 subnets (/64 each)  
+---
 
-Each department can get:
-- one or more /64 subnets  
+**Answer:**
+
+- Subnetting to /64 → borrow 16 bits  
+- Maximum number of departments = 2^16 = 65,536  
+
+👉 Each department gets one /64 subnet  
+
+- Number of hosts per department = 2^64  
+
+👉 Each subnet supports 2^64 host addresses (practically unlimited)
 
 ---
 
