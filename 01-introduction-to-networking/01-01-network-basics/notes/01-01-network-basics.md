@@ -2,25 +2,81 @@
 
 
 
-A computer network is a group of interconnected devices that can communicate and share resources.
+A computer network is a collection of interconnected devices that communicate with each other and share resources using a communication medium.
 
 
 
-\## Examples
+\## Key Components
 
-\- Internet
+
+
+\### 1. Devices
+
+Devices are the endpoints in a network.
+
+
+
+Examples:
+
+\- Computers
+
+\- Smartphones
+
+\- Printers
+
+\- Routers
+
+
+
+\---
+
+
+
+\### 2. Communication Medium
+
+The medium through which data is transmitted between devices.
+
+
+
+Examples:
+
+\- Wired: Ethernet cables
+
+\- Wireless: WiFi
+
+\- Other: Fiber optics, phone lines
+
+
+
+\---
+
+
+
+\### 3. Network Size
+
+A network can vary in size and complexity:
+
+
+
+\- Small: Two computers connected directly
+
+\- Medium: Home or office network
+
+\- Large: The Internet (billions of devices)
+
+
+
+\---
+
+
+
+\## Examples of Networks
+
+
+
+\- Internet (largest global network)
 
 \- Home WiFi network
 
-\- Office network
-
-
-
-\## Key Elements
-
-\- Devices (computers, phones)
-
-\- Communication medium (WiFi, cables)
-
-\- Protocols (rules of communication)
+\- Campus or enterprise network
 
