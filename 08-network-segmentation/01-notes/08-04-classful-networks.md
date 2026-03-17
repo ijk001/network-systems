@@ -1,4 +1,4 @@
-\# Classful Networks
+**# Classful Networks**
 
 
 
@@ -52,7 +52,7 @@ IPv4 addresses are divided into five classes:
 
 
 
-Note:
+**Note:**
 
 \- 0.0.0.0 is reserved and represents an unspecified address. It is commonly used as a default route (0.0.0.0/0)
 
