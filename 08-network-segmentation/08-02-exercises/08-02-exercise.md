@@ -145,7 +145,23 @@ Number of usable hosts:
 
 ## Final Summary
 
-- Bits borrowed = 4  
-- Subnet mask = 255.255.240.0 (/20)  
-- Magic number = 16  
-- Hosts per subnet = 4094  
+1. Bits borrowed from host portion = 4  
+
+2. Total subnet bits = 20 bits (/20)  
+
+3. Subnet mask = 255.255.240.0  
+
+4. Magic number (block size) = 16  
+
+5. Subnet network IDs:
+   - First subnet = 172.20.0.0  
+   - Second subnet = 172.20.16.0  
+   - Last required (15th) = 172.20.224.0  
+   - Last created (16th) = 172.20.240.0  
+
+6. Usable hosts per subnet = 4094  
+
+7. Host ranges:
+   - First subnet → 172.20.0.1 to 172.20.15.254  
+   - Second subnet → 172.20.16.1 to 172.20.31.254  
+   - Last required subnet → 172.20.224.1 to 172.20.239.254   
