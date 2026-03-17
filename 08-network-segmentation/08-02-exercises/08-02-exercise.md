@@ -136,14 +136,6 @@ Number of usable hosts:
 
 ---
 
-#### Last created (16th) subnet (172.20.240.0/20)
-
-- Network ID → 172.20.240.0  
-- Broadcast ID → 172.20.255.255  
-- Usable host range → 172.20.240.1 to 172.20.255.254  
-
----
-
 👉 **(7) Host ranges:**
 - First subnet → 172.20.0.1 to 172.20.15.254  
 - Second subnet → 172.20.16.1 to 172.20.31.254  
