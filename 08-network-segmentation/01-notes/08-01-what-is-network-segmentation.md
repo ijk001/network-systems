@@ -46,7 +46,6 @@ Dividing the network based on physical or geographic locations.
 **Example:**
 - Network is segmented across different branches located in different cities or regions
 
----
 
 ### 2. Department-Based Segmentation
 Separating the network according to organizational departments or functions.
@@ -54,7 +53,6 @@ Separating the network according to organizational departments or functions.
 **Example:**
 - Network is divided into segments for HR, Finance, and IT departments
 
----
 
 ### 3. Device-Type Segmentation
 Grouping devices based on their type or role in the network.
