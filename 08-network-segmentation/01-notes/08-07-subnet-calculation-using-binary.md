@@ -82,7 +82,7 @@ Thus, now:
 
 
 
-After subnetting, 2 more bits have been occupied by 1
+After subnetting, 2 host bits are borrowed for subnetting
 
 
 
@@ -226,7 +226,7 @@ Thus, now:
 
 
 
-After subnetting, 2 more bits have been occupied by 1  
+After subnetting, 2 host bits are borrowed for subnetting  
 
 
 
@@ -278,11 +278,11 @@ In decimal, address range is = 172.16.0.0 to 172.16.63.255
 
 
 
-Since, number of addresses per subnet = 16384
+Number of addresses per subnet = 16384
 
-But, In last octet the value 16383 Which is more than 255 is not Possible.
+Since each octet can only range from 0 to 255, the value 16383 cannot fit in a single octet. Therefore, the address space spans across multiple values of the third octet.
 
-since, each octet contains 0 to 255, i.e., for total 256 numbers of 4th octet, number of cycles of 3rd Octet = 16384/256 = 64,
+Since each value of the fourth octet represents 256 addresses, the total number of values required in the third octet is: 16384 / 256 = 64
 
 Again, since 3rd octet stared from 0, thus last cycle would start from 63.
 
@@ -299,6 +299,10 @@ Subnet 2: 172.16.64.0  to 172.16.127.255   or, 172.16.64.0/18
 Subnet 3: 172.16.128.0 to 172.16.191.255   or, 172.16.128.0/18
 
 Subnet 4: 172.16.192.0 to 172.16.255.255   or, 172.16.192.0/18
+
+
+
+**Note: The block size method (a faster approach for determining subnet ranges) is shown in** [**08-06-subnetting-examples.**](https://github.com/ijk001/network-systems/blob/main/08-network-segmentation/01-notes/08-06-subnetting-examples.md)
 
 
 
