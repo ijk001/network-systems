@@ -1,6 +1,8 @@
+**# Network Segmentation**
+
+
+
 \# What is Network Segmentation?
-
-
 
 Network segmentation is the practice of dividing a network into smaller, isolated segments to improve security, performance, and manageability.
 

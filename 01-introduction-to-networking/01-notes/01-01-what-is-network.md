@@ -1,6 +1,8 @@
-\# What is a Network?
+**# Network**
 
 
+
+\## What is a Network?
 
 A computer network is a collection of interconnected devices that communicate with each other and share resources using a communication medium.
 
@@ -71,8 +73,6 @@ A network can vary in size and complexity:
 
 
 \## Examples of Networks
-
-
 
 \- Internet (largest global network)
 
