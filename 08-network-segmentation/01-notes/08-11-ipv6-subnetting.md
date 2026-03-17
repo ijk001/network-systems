@@ -10,17 +10,20 @@ Unlike IPv4, IPv6 provides a **vast address space (128 bits)**, making subnettin
 
 ## IPv6 Address Structure
 
-An IPv6 address consists of **128 bits**, divided into:
+An IPv6 address consists of **128 bits**, divided into **8 blocks (hextets)**, each containing **16 bits** (16 × 8 = 128 bits).
 
-- **Network prefix / Site prefix / Global Routing prefix**
-- **Interface ID (host portion)**
+An IPv6 address is logically divided into:
+
+- **Network prefix / Site Prefix** (global routing prefix + subnet ID)  
+- **Interface ID (host portion)**  
 
 **Example:**
-2001:0db8:abcd:0012::1/64
-(2001:db8:abcd:1234:0000:0000:0000:0001/64)
 
-- First 64 bits → Network prefix  
-- Last 64 bits → Interface ID  
+2001:0db8:abcd:1234:0000:0000:0000:0001/64  
+(In short: 2001:db8:abcd:1234::1/64)
+
+- First 64 bits → Network prefix (2001:db8:abcd:1234)  
+- Last 64 bits → Interface ID (0000:0000:0000:0001)  
 
 ---
 
@@ -53,15 +56,15 @@ Subnetting in IPv6 is done by extending the **network prefix**.
 
 Example:
 
-- Original network: 2001:db8::/48  
+- Original network: 2001:db8::/32  
 
 We can create subnets by increasing the prefix:
 
-- 2001:db8:0001::/64  
-- 2001:db8:0002::/64  
-- 2001:db8:0003::/64  
+- 2001:db8:0001::/48  
+- 2001:db8:0002::/48  
+- 2001:db8:0003::/48  
 
-👉 Each /64 is a separate subnet
+👉 Each /48 is a separate subnet
 
 ---
 
