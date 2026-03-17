@@ -1,324 +1,195 @@
-**# Subnet Calculation Using Binary**
+# 08-07: Subnet Calculation Using Binary
 
-
-
-\## Why Use Binary in Subnetting?
-
-
+## Why Use Binary in Subnetting?
 
 Subnetting is fundamentally a binary operation.
 
-
-
-\- IP addresses are stored in binary  
-
-\- Subnet masks operate at the bit level  
-
-
+- IP addresses are stored in binary  
+- Subnet masks operate at the bit level  
 
 Understanding binary makes subnetting:
+- more intuitive  
+- less error-prone  
 
-\- more intuitive  
+---
 
-\- less error-prone 
+## Example 1: Basic Subnetting (/24 → /26)
 
+### Given:
+- IP Address: 192.168.1.0  
+- Default Subnet Mask: 255.255.255.0 (/24)  
+- New Subnet Mask: 255.255.255.192 (/26)  
 
+---
 
-\---
+### Step 1: Identify Network and Host Bits
 
+- 1s → Network portion  
+- 0s → Host portion  
 
+**Before subnetting:**
+- 255.255.255.0  
+- 11111111.11111111.11111111.00000000  
 
-**## Example 1: Basic Subnetting**
+**After subnetting:**
+- 255.255.255.192  
+- 11111111.11111111.11111111.11000000  
 
-**Given:**
+**Result:**
+- First 26 bits → Network  
+- Last 6 bits → Host  
 
-**- IP Address: 192.168.1.0**
+---
 
-**- Default Subnet Mask: 255.255.255.0**
+### Step 2: Number of Subnets
 
-**We subnet to: 255.255.255.192**
+Borrowed bits = 2  
 
+Number of subnets = 2² = 4  
 
+---
 
+### Step 3: Number of Hosts per Subnet
 
+Remaining host bits = 6  
 
-\## Step 1: Identify Network and Host Bits
+- Total addresses = 2⁶ = 64  
+- Usable hosts = 64 − 2 = 62  
 
+---
 
+### Step 4: Address/Subnet Ranges (Binary Understanding)
 
-\- 1s → Network portion  
+**IP Address (binary):**  
+11000000.10101000.00000001.00000000  
 
-\- 0s → Host portion  
+Keep first 26 bits fixed (network part).
 
+- Lowest address:  
+  11000000.10101000.00000001.00000000 → 192.168.1.0  
 
+- Highest address:  
+  11000000.10101000.00000001.00111111 → 192.168.1.63  
 
-Before subnetting,
+**Subnet ranges (increment = 64):**
 
-Subnet Mask: 255.255.255.0
+| Subnet | Network Address | Broadcast Address |
+|--------|----------------|-------------------|
+| 1 | 192.168.1.0   | 192.168.1.63  |
+| 2 | 192.168.1.64  | 192.168.1.127 |
+| 3 | 192.168.1.128 | 192.168.1.191 |
+| 4 | 192.168.1.192 | 192.168.1.255 |
 
-Subnet Mask in binary: 11111111.11111111.11111111.00000000
+---
 
+### Step 5: Host Range (Example: Subnet 1)
 
+- Network ID: 192.168.1.0  
+- Broadcast ID: 192.168.1.63  
+- Usable Hosts: 192.168.1.1 → 192.168.1.62  
 
-After subnetting,
+---
 
-Subnet Mask: 255.255.255.192
+## Example 2: Subnetting a Class B Network (/16 → /18)
 
-Subnet Mask in binary: 11111111.11111111.11111111.11000000
+### Given:
+- IP Address: 172.16.0.0  
+- Default Subnet Mask: /16  
+- New Subnet Mask: /18  
 
+---
 
+### Step 1: Identify Network and Host Bits
 
-Thus, now:
+**Before subnetting:**
+- 255.255.0.0  
+- 11111111.11111111.00000000.00000000  
 
-\- first 26 bits (1s) → network  
+**After subnetting:**
+- 255.255.192.0  
+- 11111111.11111111.11000000.00000000  
 
-\- last 6 bits (0s) → host
+**Result:**
+- First 18 bits → Network  
+- Last 14 bits → Host  
 
-&#x20;
+---
 
+### Step 2: Number of Subnets
 
+Borrowed bits = 2  
 
-\## Step 2: Number of Subnets
+Number of subnets = 2² = 4  
 
+---
 
+### Step 3: Number of Hosts per Subnet
 
-After subnetting, 2 host bits are borrowed for subnetting
+Remaining host bits = 14  
 
+- Total addresses = 2¹⁴ = 16384  
+- Usable hosts = 16384 − 2 = 16382  
 
+---
 
-Thus, Number of subnets = 2² = 4
+### Step 4: Address/Subnet Ranges (Binary Understanding)
 
+**IP Address (binary):**  
+10101100.00010000.00000000.00000000  
 
+Keep first 18 bits fixed.
 
+- Lowest address:  
+  10101100.00010000.00000000.00000000 → 172.16.0.0  
 
+- Highest address:  
+  10101100.00010000.00111111.11111111 → 172.16.63.255  
 
-\## Step 3: Number of Hosts per Subnet
+---
 
+### Understanding Multi-Octet Range
 
+Total addresses per subnet = 16384  
 
-After subnetting, number of remaining bits for 0 is 6
+- Each 4th octet cycle = 256 addresses  
+- 16384 / 256 = 64 values in the 3rd octet  
 
+So:
+- 3rd octet ranges from 0 → 63  
 
+---
 
-Thus,
+### Subnet Ranges
 
-Number of addresses per Subnet = 2⁶ = 64 addresses per subnet
+| Subnet | Network Address | Broadcast Address |
+|--------|----------------|-------------------|
+| 1 | 172.16.0.0   | 172.16.63.255  |
+| 2 | 172.16.64.0  | 172.16.127.255 |
+| 3 | 172.16.128.0 | 172.16.191.255 |
+| 4 | 172.16.192.0 | 172.16.255.255 |
 
+---
 
+### Step 5: Host Range (Example: Subnet 1)
 
-Number of hosts per Subnet = 2⁶ - 2 = 62 hosts per Subnet
+- Network ID: 172.16.0.0  
+- Broadcast ID: 172.16.63.255  
+- Usable Hosts: 172.16.0.1 → 172.16.63.254  
 
+---
 
+## Note
 
+The block size method (a faster approach for determining subnet ranges) is covered in:
 
+➡️ 08-06: Subnetting Examples  
 
-\## Step 4: Address/Subnet Ranges
+---
 
+## Key Idea
 
+Subnetting using binary helps you:
 
-IP Address: 192.168.1.0
-
-IP Address in dotted binary: 11000000.10101000.00000001.00000000
-
-
-
-Since, 1st 26 bits are for network,
-
-Thus, 1st Address is = 11000000.10101000.00000001.00000000
-
-and last Address is = 11000000.10101000.00000001.00111111 (keeping Network bits, i.e., 1st 26 bits unchanged)
-
-
-
-In decimal Address Range is = 192.168.1.0 to 192.168.1.63
-
-
-
-Since, Number of addresses per Subnet = 64
-
-Thus, Subnet Ranges:
-
-Subnet 1: 192.168.1.0   to 192.168.1.63    or, 192.168.1.0/26
-
-Subnet 2: 192.168.1.64  to 192.168.1.127   or, 192.168.1.64/26
-
-Subnet 3: 192.168.1.128 to 192.168.1.191   or, 192.168.1.128/26
-
-Subnet 4: 192.168.1.192 to 192.168.1.255   or, 192.168.1.192/26
-
-
-
-
-
-\## Step 5: Network, Broadcast, Host Range
-
-
-
-Example:
-
-For Subnet 1:
-
-\- Network ID: 192.168.1.0
-
-\- Broadcast ID: 192.168.1.63
-
-\- Usable Hosts: 192.168.1.1 to 192.168.1.62
-
-
-
-\---
-
-
-
-**## Example 2: Subnetting a Class B Network (/16 → /18)**
-
-
-
-**Given:**
-
-**- IP Address: 172.16.0.0**
-
-**- Default Subnet Mask: /16**
-
-**We subnet to: /18**
-
-
-
-
-
-\## Step 1: Identify Network and Host Bits
-
-
-
-\- 1s → Network portion  
-
-\- 0s → Host portion  
-
-
-
-Before subnetting,  
-
-Subnet Mask: 255.255.0.0  
-
-Subnet Mask in binary: 11111111.11111111.00000000.00000000  
-
-
-
-After subnetting,  
-
-Subnet Mask: 255.255.192.0  
-
-Subnet Mask in binary: 11111111.11111111.11000000.00000000  
-
-
-
-Thus, now:
-
-\- first 18 bits (1s) → network  
-
-\- last 14 bits (0s) → host  
-
-
-
-
-
-\## Step 2: Number of Subnets
-
-
-
-After subnetting, 2 host bits are borrowed for subnetting  
-
-
-
-Thus, Number of subnets = 2² = 4  
-
-
-
-
-
-\## Step 3: Number of Hosts per Subnet
-
-
-
-After subnetting, number of remaining bits for 0 is 14  
-
-
-
-Thus,  
-
-Number of addresses per subnet = 2¹⁴ = 16384 addresses per subnet  
-
-
-
-Number of hosts per subnet = 2¹⁴ - 2 = 16382 hosts per subnet  
-
-
-
-
-
-\## Step 4: Address/Subnet Ranges
-
-
-
-IP Address: 172.16.0.0  
-
-IP Address in dotted binary: 10101100.00010000.00000000.00000000  
-
-
-
-Since, first 18 bits are for network,  
-
-Thus, first address is = 10101100.00010000.00000000.00000000  
-
-and last address is = 10101100.00010000.00111111.11111111  
-
-
-
-In decimal, address range is = 172.16.0.0 to 172.16.63.255  
-
-
-
-Number of addresses per subnet = 16384
-
-Since each octet can only range from 0 to 255, the value 16383 cannot fit in a single octet. Therefore, the address space spans across multiple values of the third octet.
-
-Since each value of the fourth octet represents 256 addresses, the total number of values required in the third octet is: 16384 / 256 = 64
-
-Again, since 3rd octet stared from 0, thus last cycle would start from 63.
-
-
-
-
-
-Thus, Subnet Ranges:
-
-Subnet 1: 172.16.0.0   to 172.16.63.255    or, 172.16.0.0/18
-
-Subnet 2: 172.16.64.0  to 172.16.127.255   or, 172.16.64.0/18
-
-Subnet 3: 172.16.128.0 to 172.16.191.255   or, 172.16.128.0/18
-
-Subnet 4: 172.16.192.0 to 172.16.255.255   or, 172.16.192.0/18
-
-
-
-**Note: The block size method (a faster approach for determining subnet ranges) is shown in** [**08-06-subnetting-examples.**](https://github.com/ijk001/network-systems/blob/main/08-network-segmentation/01-notes/08-06-subnetting-examples.md)
-
-
-
-
-
-\## Step 5: Network, Broadcast, Host Range
-
-
-
-Example:
-
-For Subnet 1:
-
-\- Network ID: 172.16.0.0  
-
-\- Broadcast ID: 172.16.63.255  
-
-\- Usable Hosts: 172.16.0.1 to 172.16.63.254
-
+- clearly visualize network vs host bits  
+- understand how address ranges are formed  
+- avoid calculation mistakes  
