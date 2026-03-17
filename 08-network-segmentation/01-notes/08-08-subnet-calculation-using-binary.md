@@ -1,4 +1,4 @@
-# 08-07: Subnet Calculation Using Binary
+# 08-08: Subnet Calculation Using Binary
 
 ## Why Use Binary in Subnetting?
 

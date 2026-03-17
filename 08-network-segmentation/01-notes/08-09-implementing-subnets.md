@@ -1,4 +1,4 @@
-# 08-08: Implementing Subnets on a Network
+# 08-09: Implementing Subnets on a Network
 
 ## Why Implement Subnets?
 

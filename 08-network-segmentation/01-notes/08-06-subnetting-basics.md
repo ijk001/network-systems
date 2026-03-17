@@ -1,4 +1,4 @@
-# 08-05: Subnetting Basics
+# 08-06: Subnetting Basics
 
 ## What is Subnetting?
 

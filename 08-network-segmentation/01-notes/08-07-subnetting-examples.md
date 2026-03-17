@@ -1,4 +1,4 @@
-# 08-06: Subnetting Examples
+# 08-07: Subnetting Examples
 
 ## Example 1: Basic Subnetting (/24 → /26)
 
