@@ -12,13 +12,14 @@ Unlike IPv4, IPv6 provides a **vast address space (128 bits)**, making subnettin
 
 An IPv6 address consists of **128 bits**, divided into:
 
-- **Network prefix**
+- **Network prefix / Site prefix / Global Routing prefix**
 - **Interface ID (host portion)**
 
 **Example:**
 2001:0db8:abcd:0012::1/64
+(2001:db8:abcd:1234:0000:0000:0000:0001/64)
 
-- First 64 bits → Network  
+- First 64 bits → Network prefix  
 - Last 64 bits → Interface ID  
 
 ---
