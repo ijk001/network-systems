@@ -1,16 +1,18 @@
-\# What is Classful Networks?
+\# Classful Networks
 
 
 
-Classful networking is an older method of IP address allocation where IP addresses are divided into fixed classes based on their first octet.
+\## What are Classful Networks?
+
+Classful networking is an older method of IP address allocation where IP addresses are divided into fixed classes.
 
 
 
 Each class defines:
 
-\- the network portion
+\- a default subnet mask
 
-\- the host portion
+\- a fixed division between network and host portions
 
 
 
@@ -20,13 +22,11 @@ Each class defines:
 
 \## Why Classful Networks Were Used
 
-
-
 \- Simple and easy to understand
 
 \- Standardized network sizes
 
-\- No need for subnet masks initially
+\- No need to specify subnet masks explicitly
 
 
 
@@ -34,9 +34,7 @@ Each class defines:
 
 
 
-\## IP Address Classes
-
-
+\## IPv4 Address Classes
 
 IPv4 addresses are divided into five classes:
 
@@ -44,13 +42,23 @@ IPv4 addresses are divided into five classes:
 
 \### Class A
 
-\- Range: 1.0.0.0 to 126.255.255.255
+\- Range: 0.0.0.0 to 127.255.255.255
 
-\- Default Subnet Mask: 255.0.0.0 (/8)
+\- Default Subnet Mask: 255.0.0.0 or, 11111111.00000000.00000000.00000000 or, /8
 
-\- Network bits: 8
+\- Network portion: first 8 bits
 
-\- Host bits: 24
+\- Host portion: last 24 bits
+
+
+
+Note:
+
+\- 0.0.0.0 is reserved and represents an unspecified address. It is commonly used as a default route (0.0.0.0/0)
+
+\- 127.0.0.0 to 127.255.255.255 is reserved for loopback  
+
+\- Usable Class A range: 1.0.0.0 to 126.255.255.255
 
 
 
@@ -62,11 +70,11 @@ IPv4 addresses are divided into five classes:
 
 \- Range: 128.0.0.0 to 191.255.255.255
 
-\- Default Subnet Mask: 255.255.0.0 (/16)
+\- Default Subnet Mask: 255.255.0.0 or, 11111111.11111111.00000000.00000000 or, /16
 
-\- Network bits: 16
+\- Network portion: first 16 bits
 
-\- Host bits: 16
+\- Host portion: last 16 bits
 
 
 
@@ -78,11 +86,11 @@ IPv4 addresses are divided into five classes:
 
 \- Range: 192.0.0.0 to 223.255.255.255
 
-\- Default Subnet Mask: 255.255.255.0 (/24)
+\- Default Subnet Mask: 255.255.255.0 or, 11111111.11111111.11111111.00000000 or, /24
 
-\- Network bits: 24
+\- Network portion: first 24 bits
 
-\- Host bits: 8
+\- Host portion: last 8 bits
 
 
 
@@ -94,7 +102,9 @@ IPv4 addresses are divided into five classes:
 
 \- Range: 224.0.0.0 to 239.255.255.255
 
-\- Used for multicast communication
+\- Purpose: Reserved for Multicast communication
+
+\- No subnet mask, network portion, or host portion defined
 
 
 
@@ -106,7 +116,23 @@ IPv4 addresses are divided into five classes:
 
 \- Range: 240.0.0.0 to 255.255.255.255
 
-\- Reserved for experimental use
+\- Purpose: Reserved for Experimental use
+
+\- No subnet mask, network portion, or host portion defined
+
+
+
+\---
+
+
+
+\## Key Observation
+
+The first three classes (A, B, C) have fixed subnet masks, meaning:
+
+\- the network and host portions are predefined
+
+\- there is no flexibility in dividing the network
 
 
 
@@ -115,8 +141,6 @@ IPv4 addresses are divided into five classes:
 
 
 \## Limitations of Classful Networking
-
-
 
 \- Inefficient use of IP addresses
 
@@ -131,8 +155,6 @@ IPv4 addresses are divided into five classes:
 
 
 \## Transition to Modern Networking
-
-
 
 Due to these limitations, classful networking was replaced by:
 
@@ -150,7 +172,7 @@ Due to these limitations, classful networking was replaced by:
 
 
 
-Classful networks divide IP addresses into fixed classes,
+Classful networking uses fixed network boundaries,
 
-while modern networking allows flexible allocation using subnetting and CIDR.
+while modern networking allows flexible boundaries using subnet masks.
 
