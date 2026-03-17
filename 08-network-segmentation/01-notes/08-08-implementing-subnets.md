@@ -17,7 +17,7 @@ Each subnet forms a **separate broadcast domain**.
 ## Basic Network Structure
 
 ![Subnets 1, 2, and 3 and
-their respective default gateways](image 1.png)
+their respective default gateways](<image 1.png>)
 
 A subnetted network typically consists of:
 
