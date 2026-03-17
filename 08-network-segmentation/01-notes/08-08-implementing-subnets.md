@@ -70,11 +70,11 @@ Example:
 
 ## One Router Connecting Multiple LANs
 
-A single router can connect multiple LANs:
-
 ![One router connecting
-several LANs, each assigned a subnet](image2.png)
+several LANs, each assigned a subnet](<image 2.png>)
 
+
+A single router can connect multiple LANs:
 - Each LAN is assigned a different subnet  
 - Each subnet is isolated from others  
 - The router enables communication between subnets  
@@ -92,7 +92,8 @@ This is commonly used in:
 
 DHCP uses **broadcast messages**, which do not cross routers.
 
-![DHCP Relay Agent](image 3.png)
+![DHCP Relay Agent](<image 3.png>)
+
 
 ### Solution: DHCP Relay Agent
 
