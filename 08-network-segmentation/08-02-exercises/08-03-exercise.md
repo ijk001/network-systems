@@ -38,7 +38,7 @@ This is a Class C network:
 
 - Default network portion = first 3 octets → 192.168.89  
 
-Thus, first subnet starts from:
+Thus, first subnet starts from: 192.168.89.0
 
 👉 **(2) First subnet network ID = 192.168.89.0**
 
@@ -58,8 +58,8 @@ Using block size 32, subnet IDs increase by 32:
 - 8th → 192.168.89.224  
 
 👉 **(3) Network IDs:**
-- Second subnet = 192.168.89.32  
-- Last subnet = 192.168.89.224  
+- Second subnet → 192.168.89.32  
+- Last subnet → 192.168.89.224  
 
 ---
 
@@ -67,9 +67,8 @@ Using block size 32, subnet IDs increase by 32:
 
 Host IP = 192.168.89.130  
 
-Since block size = 32, subnet boundaries occur at:
-
-0, 32, 64, 96, 128, 160, ...
+Since block size = 32,
+subnet boundaries occur at: 0, 32, 64, 96, 128, 160, ...
 
 The largest value ≤ 130 is **128**.
 
@@ -100,9 +99,9 @@ The last address of this subnet is the broadcast address.
 - Network ID = 192.168.89.128  
 - Broadcast ID = 192.168.89.159  
 
-Usable host range:
+Usable host range: 192.168.89.129 to 192.168.89.158
 
-👉 **(6) 192.168.89.129 to 192.168.89.158**
+👉 **(6) Host range = 192.168.89.129 to 192.168.89.158**
 
 ---
 
@@ -113,11 +112,11 @@ Usable host range:
 2. First subnet network ID = 192.168.89.0  
 
 3. Network IDs:
-   - Second subnet = 192.168.89.32  
-   - Last subnet = 192.168.89.224  
+   - Second subnet → 192.168.89.32  
+   - Last subnet → 192.168.89.224  
 
 4. Host’s subnet network ID = 192.168.89.128  
 
-5. Broadcast address = 192.168.89.159  
+5. Host’s Broadcast address = 192.168.89.159  
 
 6. Host range = 192.168.89.129 to 192.168.89.158  

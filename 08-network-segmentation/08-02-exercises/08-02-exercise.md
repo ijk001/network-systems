@@ -89,22 +89,18 @@ Using block size 16:
 - 16th → 172.20.240.0/20  
 
 👉 **(5) Network IDs:**
-- First subnet = 172.20.0.0  
-- Second subnet = 172.20.16.0  
-- Last required (15th) = 172.20.224.0  
-- Last created (16th) = 172.20.240.0  
+- First subnet → 172.20.0.0  
+- Second subnet → 172.20.16.0  
+- Last required (15th) → 172.20.224.0  
+- Last created (16th) → 172.20.240.0  
 
 ---
 
 ### Step 6: Number of hosts per subnet
 
-Remaining host bits:
+Remaining host bits: 32 − 20 = 12  
 
-32 − 20 = 12  
-
-Number of usable hosts:
-
-2¹² − 2 = 4096 − 2 = **4094**
+Number of usable hosts: 2¹² − 2 = 4096 − 2 = **4094**
 
 👉 **(6) Usable hosts per subnet = 4094**
 
@@ -114,25 +110,25 @@ Number of usable hosts:
 
 #### First subnet (172.20.0.0/20)
 
-- Network ID → 172.20.0.0  
-- Broadcast ID → 172.20.15.255  
-- Usable host range → 172.20.0.1 to 172.20.15.254  
+- Network ID = 172.20.0.0  
+- Broadcast ID = 172.20.15.255  
+- Usable host range = 172.20.0.1 to 172.20.15.254  
 
 ---
 
 #### Second subnet (172.20.16.0/20)
 
-- Network ID → 172.20.16.0  
-- Broadcast ID → 172.20.31.255  
-- Usable host range → 172.20.16.1 to 172.20.31.254  
+- Network ID = 172.20.16.0  
+- Broadcast ID = 172.20.31.255  
+- Usable host range = 172.20.16.1 to 172.20.31.254  
 
 ---
 
 #### Last required (15th) subnet (172.20.224.0/20)
 
-- Network ID → 172.20.224.0  
-- Broadcast ID → 172.20.239.255  
-- Usable host range → 172.20.224.1 to 172.20.239.254  
+- Network ID = 172.20.224.0  
+- Broadcast ID = 172.20.239.255  
+- Usable host range = 172.20.224.1 to 172.20.239.254  
 
 ---
 
@@ -154,10 +150,10 @@ Number of usable hosts:
 4. Magic number (block size) = 16  
 
 5. Subnet network IDs:
-   - First subnet = 172.20.0.0  
-   - Second subnet = 172.20.16.0  
-   - Last required (15th) = 172.20.224.0  
-   - Last created (16th) = 172.20.240.0  
+   - First subnet → 172.20.0.0  
+   - Second subnet → 172.20.16.0  
+   - Last required (15th) → 172.20.224.0  
+   - Last created (16th) → 172.20.240.0  
 
 6. Usable hosts per subnet = 4094  
 
