@@ -2,144 +2,123 @@
 
 ## Question
 
-A network **10.0.0.0/24** is given.  
-This network has to be divided using **VLSM** for the following requirements:
+An organization is assigned the IPv6 block **2001:0abc:23a4::/48**.
 
-- LAN 1 → 60 hosts  
-- LAN 2 → 30 hosts  
-- LAN 3 → 12 hosts  
-- LAN 4 → 6 hosts  
+The network needs to assign a separate subnet to each department using the standard IPv6 subnet size **/64**.
 
-Based on this requirement, answer the following:
+Based on this information, answer the following:
 
-1. What is the required subnet size for each LAN?  
-2. What prefix length will be used for each LAN?  
-3. What subnet will be assigned to each LAN?  
-4. What is the usable host range of each subnet?  
-5. What unused address range remains after allocation?  
+1. How many bits are available for subnetting?  
+2. What is the maximum number of /64 subnets that can be created?  
+3. What is the standard subnet size used here?  
+4. What are the first three possible /64 subnet IDs?  
+5. If one department is assigned the subnet **2001:0abc:23a4:2::/64**, what is the network prefix of that department?  
+6. How many host addresses are possible in each /64 subnet?  
 
 ---
 
 ## Solution
 
-### Step 1: Arrange host requirements in descending order
+### Step 1: Number of bits available for subnetting
 
-- LAN 1 → 60 hosts  
-- LAN 2 → 30 hosts  
-- LAN 3 → 12 hosts  
-- LAN 4 → 6 hosts  
+Given IPv6 block = **2001:0abc:23a4::/48**
 
----
+The standard subnet size to be used = **/64**
 
-### Step 2: Find required subnet size for each LAN
+Thus, bits available for subnetting:
 
-Need to use:
+64 − 48 = **16 bits**
 
-Required addresses = hosts + 2
-
-#### LAN 1
-- Hosts needed = 60
-- Required = 62
-- Closest power of 2 = 64
-- Prefix = /26
-
-#### LAN 2
-- Hosts needed = 30
-- Required = 32
-- Closest power of 2 = 32
-- Prefix = /27
-
-#### LAN 3
-- Hosts needed = 12
-- Required = 14
-- Closest power of 2 = 16
-- Prefix = /28
-
-#### LAN 4
-- Hosts needed = 6
-- Required = 8
-- Closest power of 2 = 8
-- Prefix = /29
-
-👉 **(1) Required subnet sizes:**
-- LAN 1 → 64 addresses
-- LAN 2 → 32 addresses
-- LAN 3 → 16 addresses
-- LAN 4 → 8 addresses
-
-👉 **(2) Prefix lengths:**
-- LAN 1 → /26
-- LAN 2 → /27
-- LAN 3 → /28
-- LAN 4 → /29
+👉 **(1) Bits available for subnetting = 16**
 
 ---
 
-### Step 3: Assign subnets
+### Step 2: Maximum number of /64 subnets
 
-#### LAN 1
-- Subnet = 10.0.0.0/26
-- Address range = 10.0.0.0 to 10.0.0.63
-- Usable host range = 10.0.0.1 to 10.0.0.62
+Number of subnets = 2^n
 
-#### LAN 2
-- Subnet = 10.0.0.64/27
-- Address range = 10.0.0.64 to 10.0.0.95
-- Usable host range = 10.0.0.65 to 10.0.0.94
+Here, n = 16
 
-#### LAN 3
-- Subnet = 10.0.0.96/28
-- Address range = 10.0.0.96 to 10.0.0.111
-- Usable host range = 10.0.0.97 to 10.0.0.110
+So,
 
-#### LAN 4
-- Subnet = 10.0.0.112/29
-- Address range = 10.0.0.112 to 10.0.0.119
-- Usable host range = 10.0.0.113 to 10.0.0.118
+2^16 = **65,536**
 
-👉 **(3) Assigned subnets:**
-- LAN 1 → 10.0.0.0/26
-- LAN 2 → 10.0.0.64/27
-- LAN 3 → 10.0.0.96/28
-- LAN 4 → 10.0.0.112/29
+👉 **(2) Maximum number of /64 subnets = 65,536**
 
 ---
 
-### Step 4: Find unused address range
+### Step 3: Standard subnet size
 
-Remaining range:
+In IPv6, the standard subnet size is **/64**.
 
-- 10.0.0.120 to 10.0.0.255
+That means:
 
-👉 **(5) Unused address range = 10.0.0.120 to 10.0.0.255**
+- first 64 bits → network prefix  
+- last 64 bits → interface ID  
+
+👉 **(3) Standard subnet size = /64**
+
+---
+
+### Step 4: First three possible /64 subnet IDs
+
+For a /48 block, the first 48 bits remain fixed.  
+The next 16 bits are used as the subnet ID.
+
+Thus, the first few /64 subnet IDs are:
+
+- 2001:0abc:23a4:0::/64  
+- 2001:0abc:23a4:1::/64  
+- 2001:0abc:23a4:2::/64  
+
+👉 **(4) First three /64 subnet IDs:**
+- 2001:0abc:23a4:0::/64  
+- 2001:0abc:23a4:1::/64  
+- 2001:0abc:23a4:2::/64  
+
+---
+
+### Step 5: Network prefix of the given department subnet
+
+Given department subnet:
+
+**2001:0abc:23a4:2::/64**
+
+Thus, the network prefix of that department is:
+
+👉 **(5) Network prefix = 2001:0abc:23a4:2::/64**
+
+---
+
+### Step 6: Number of host addresses in each /64 subnet
+
+In a /64 subnet:
+
+- total IPv6 bits = 128  
+- network bits = 64  
+- remaining host bits = 64  
+
+So,
+
+Number of host addresses = 2^64
+
+👉 **(6) Host addresses per /64 subnet = 2^64**
 
 ---
 
 ## Final Summary
 
-1. Required subnet sizes:
-   - LAN 1 → 64
-   - LAN 2 → 32
-   - LAN 3 → 16
-   - LAN 4 → 8
+1. Bits available for subnetting = 16  
 
-2. Prefix lengths:
-   - LAN 1 → /26
-   - LAN 2 → /27
-   - LAN 3 → /28
-   - LAN 4 → /29
+2. Maximum number of /64 subnets = 65,536  
 
-3. Assigned subnets:
-   - LAN 1 → 10.0.0.0/26
-   - LAN 2 → 10.0.0.64/27
-   - LAN 3 → 10.0.0.96/28
-   - LAN 4 → 10.0.0.112/29
+3. Standard subnet size = /64  
 
-4. Usable host ranges:
-   - LAN 1 → 10.0.0.1 to 10.0.0.62
-   - LAN 2 → 10.0.0.65 to 10.0.0.94
-   - LAN 3 → 10.0.0.97 to 10.0.0.110
-   - LAN 4 → 10.0.0.113 to 10.0.0.118
+4. First three /64 subnet IDs:
+   - 2001:0abc:23a4:0::/64  
+   - 2001:0abc:23a4:1::/64  
+   - 2001:0abc:23a4:2::/64  
 
-5. Unused address range:
-   - 10.0.0.120 to 10.0.0.255
+5. Network prefix of the given department subnet = 2001:0abc:23a4:2::/64  
+
+6. Host addresses per /64 subnet = 2^64  
