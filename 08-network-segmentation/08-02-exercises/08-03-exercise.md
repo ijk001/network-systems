@@ -1,70 +1,123 @@
-# 08-01: Network Segmentation
+# 08-03: Exercises
 
-## What is Network Segmentation?
+## Question
 
-Network segmentation is the practice of dividing a network into smaller, isolated segments to improve security, performance, and manageability.
+An IPv4 host has the following configuration:
 
----
+- IP address: **192.168.89.130**  
+- Subnet mask: **255.255.255.224 (/27)**  
 
-## Why Network Segmentation is Important
+Based on this information, answer the following:
 
-### 1. Enhanced Security
-- Limits the spread of attacks
-- Isolates sensitive systems
-
-### 2. Improved Performance
-- Reduces network congestion
-- Improves traffic management
-
-### 3. Better Management
-- Easier monitoring and control
-- Better policy enforcement
+1. What is the magic number (block size)?  
+2. What is the network ID of the first subnet?  
+3. What are the network IDs of:
+   - the second subnet  
+   - the last subnet  
+4. What is the network ID of the subnet to which the given host belongs?  
+5. What is the broadcast address of that subnet?  
+6. What is the usable host range of that subnet?  
 
 ---
 
-## Common Segmentation Techniques
+## Solution
 
-### 1. Subnetting
-- Dividing a network into smaller IP ranges
+### Step 1: Magic number (Block Size)
 
-### 2. VLAN (Virtual LAN)
-- Logical separation within a physical network
+Subnet mask = 255.255.255.224  
 
-### 3. Firewalls
-- Control traffic between segments
+Magic number = 256 − 224 = **32**
 
-### 4. Access Control Lists (ACLs)
-- Define allowed and blocked communication
+👉 **(1) Magic number = 32**
 
 ---
 
-## Common Segmentation Strategies
+### Step 2: Network ID of the first subnet
 
-### 1. Geographic Segmentation
-Dividing the network based on physical or geographic locations.
+This is a Class C network:
 
-**Example:**
-- Network is segmented across different branches located in different cities or regions
+- Default network portion = first 3 octets → 192.168.89  
 
+Thus, first subnet starts from:
 
-### 2. Department-Based Segmentation
-Separating the network according to organizational departments or functions.
-
-**Example:**
-- Network is divided into segments for HR, Finance, and IT departments
-
-
-### 3. Device-Type Segmentation
-Grouping devices based on their type or role in the network.
-
-**Example:**
-- Segment 1: Personal devices (laptops, phones)
-- Segment 2: IoT devices (smart TVs, smart bulbs)
+👉 **(2) First subnet network ID = 192.168.89.0**
 
 ---
 
-## Key Idea
+### Step 3: Network IDs of subnets
 
-Instead of one large network:
+Using block size 32, subnet IDs increase by 32:
 
-➡️ Create multiple smaller, controlled network segments
+- 1st → 192.168.89.0  
+- 2nd → 192.168.89.32  
+- 3rd → 192.168.89.64  
+- 4th → 192.168.89.96  
+- 5th → 192.168.89.128  
+- 6th → 192.168.89.160  
+- 7th → 192.168.89.192  
+- 8th → 192.168.89.224  
+
+👉 **(3) Network IDs:**
+- Second subnet = 192.168.89.32  
+- Last subnet = 192.168.89.224  
+
+---
+
+### Step 4: Network ID of the host’s subnet
+
+Host IP = 192.168.89.130  
+
+Since block size = 32, subnet boundaries occur at:
+
+0, 32, 64, 96, 128, 160, ...
+
+The largest value ≤ 130 is **128**.
+
+Thus:
+
+👉 **(4) Network ID = 192.168.89.128**
+
+---
+
+### Step 5: Broadcast address of the host’s subnet
+
+The host belongs to the subnet that starts at **192.168.89.128**.
+
+Since block size = 32,
+
+- Next subnet starts from = 192.168.89.128 + 32 = **192.168.89.160**  
+
+So, the last address of the current subnet = 192.168.89.160 − 1 = **192.168.89.159**
+
+The last address of this subnet is the broadcast address.
+
+👉 **(5) Broadcast address = 192.168.89.159**
+
+---
+
+### Step 6: Host range of the subnet
+
+- Network ID = 192.168.89.128  
+- Broadcast ID = 192.168.89.159  
+
+Usable host range:
+
+👉 **(6) 192.168.89.129 to 192.168.89.158**
+
+---
+
+## Final Summary
+
+1. Magic number = 32  
+
+2. First subnet network ID = 192.168.89.0  
+
+3. Network IDs:
+   - Second subnet = 192.168.89.32  
+   - Last subnet = 192.168.89.224  
+
+4. Host’s subnet network ID = 192.168.89.128  
+
+5. Broadcast address = 192.168.89.159  
+
+6. Host range = 192.168.89.129 to 192.168.89.158  
